@@ -26,7 +26,7 @@ public class Telephone {
 	private Long idTel;
 	
 	@NotNull
-	@Size (min = 4,max = 15)
+	@Size (min = 4,max = 30)
 	private String marqueTel;
 	
 	@Min(value = 10)

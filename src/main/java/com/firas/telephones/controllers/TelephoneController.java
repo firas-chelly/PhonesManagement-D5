@@ -29,7 +29,8 @@ public class TelephoneController {
 	public String showCreate(ModelMap modelMap)
 	{
 	modelMap.addAttribute("telephone", new Telephone());
-	return "createTelephone";
+	modelMap.addAttribute("mode", "new");
+	return "formTelephone";
 	}
 	
 	@RequestMapping("/saveTelephone")
@@ -39,9 +40,9 @@ public class TelephoneController {
 	/*Telephone saveTelephone = telephoneService.saveTelephone(telephone);
 	String msg ="Telephone enregistré avec Id "+saveTelephone.getIdTel();
 	modelMap.addAttribute("msg", msg);*/
-	if (bindingResult.hasErrors()) return "createTelephone";
+	if (bindingResult.hasErrors()) return "formTelephone";
 	telephoneService.saveTelephone(telephone);
-	return "createTelephone";
+	return "formTelephone";
 	}
 	
 	@RequestMapping("/ListeTelephones")
@@ -84,7 +85,8 @@ public class TelephoneController {
 	{
 	Telephone t= telephoneService.getTelephone(id);
 	modelMap.addAttribute("telephone", t);
-	return "editerTelephone";
+	modelMap.addAttribute("mode", "edit");
+	return "formTelephone";
 	}
 
 	@RequestMapping("/updateTelephone")

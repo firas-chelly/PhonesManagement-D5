@@ -13,11 +13,15 @@
 <div layout:fragment="Mycontent">
 <div class="container mt-5" >
 <div class="card">
+<div class="card-header" th:if="${mode=='new'}"> Ajout des Telephones </div>
+<div class="card-header" th:if="${mode=='edit'}">Modification des Telephones</div>
 <div class="card-body">
- <div class="card-header"><b>Ajouter un Telephone</b></div>
- <br>
 <form th:action="@{saveTelephone}" method="post">
  <div class="form-group">
+ <label class="control-label" hidden>ID Telephone :</label>
+<input type="hidden" name="idTel" class="form-control" th:value="${telephone.idTel}" />
+</div>
+<div class="form-group">
  <label class="control-label">Marque Telephone :</label>
  <input type="text" name="marqueTel" class="form-control" th:value="${telephone.marqueTel}" />
 <span th:errors= ${telephone.marqueTel} class="text-danger"> </span>
@@ -28,19 +32,15 @@
 <span th:errors= ${telephone.prixTel} class="text-danger"> </span>
  </div>
  <div class="form-group">
- <label class="control-label">date création :</label>
- <input type="date" name="date" class="form-control" th:value="${telephone.dateCreation}" />
+ <label class="control-label">date creation :</label>
+ <input type="date" name="dateCreation" class="form-control" th:value="${telephone.dateCreation}" />
 <span th:errors= ${telephone.dateCreation} class="text-danger"> </span>
  </div>
-
  <div>
- <button type="submit" class="btn btn-primary">Ajouter</button>
+ <button type="submit" class="btn btn-primary">Valider</button>
 </div>
 </form>
 </div>
-<br/>
- <!-- <div th:text="${msg}"></div> -->
-<br/>
 </div>
 </div>
 </div>
